@@ -1,0 +1,29 @@
+<mp-toptips msg="{{error}}" type="error" show="{{error}}"></mp-toptips>
+<view class="page" xmlns:wx="http://www.w3.org/1999/xhtml">
+
+	<view class="page__bd">
+		<mp-form id="form" rules="{{rules}}" models="{{taskForm}}">
+			<mp-cells title="新建任务" footer="请填写提醒日期，否则将不会推送消息">
+				<mp-cell prop="content" title="内容" ext-class="">
+					<input data-field="content" class="weui-input" placeholder="请输入任务内容" value="{{taskForm.content}}" bindinput="formInputChange"/>
+				</mp-cell>
+				<mp-cell prop="date" title="提醒日期" ext-class="">
+					<picker mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}">
+						<view class="picker">
+							{{multiArray[0][multiIndex[0]]}}{{multiArray[1][multiIndex[1]]}}
+						</view>
+					</picker>
+				</mp-cell>
+				<mp-cell prop="isImportant" title="是否重要" ext-class="">
+					<view class="weui-cell__ft">
+						<switch data-field="isImportant" checked="{{taskForm.isImportant}}" />
+					</view>
+				</mp-cell>
+			</mp-cells>
+		</mp-form>
+
+		<view class="weui-btn-area">
+			<button class="weui-btn" type="primary" bindtap="submitForm">确定</button>
+		</view>
+	</view>
+</view>
